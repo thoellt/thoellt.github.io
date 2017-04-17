@@ -1,0 +1,64 @@
+{% capture id %}{{ paper.id | remove:'/' | downcase }}{% endcapture %}
+<div class="content row" id="{{id}}">
+	<img src="{{ BASE_PATH }}assets/papers/{{ paper.name }}/icon.png" class="paper-pic" />
+
+  <div class="paper-text">
+    <span class="p-aut">{{ paper.author }}.</span>
+    <span class="p-tit">{{ paper.title }}.</span>
+
+		{% if paper.kind == "journal" %}
+    	<span class="p-jou">{{ paper.journal }},</span>
+    {% elsif paper.kind == "conference" %}
+			In {{ paper.journal }},
+    {% else %}
+			{{ paper.journal }},
+    {% endif %}
+
+		{% if paper.volume %}
+				{{ paper.volume }}{% if paper.issue %}({{ paper.issue }}){% endif %}:
+    {% endif %}
+
+		{% if paper.page_start and paper.page_end %}
+			<span class="p-pag">
+				pp. {{ paper.page_start }}&mdash;{{ paper.page_end }},
+			</span>
+    {% elsif paper.page_start %}
+				p. {{ paper.page_start }},
+    {% endif %}
+
+  	<span class="p-yea">{{ paper.year }}.</span>
+	</div>
+
+	<div id="content{{id}}" class="folderContent">
+		<div class="shade-top"></div>
+		<div class="content">
+			<div class="triangle-top"></div>
+			<h1>{{ paper.title }}</h1>
+			<h3>{{ paper.author }}<br/>{{ paper.journal }}</h3>
+
+			<a href="{{ BASE_PATH }}assets/papers/{{ paper.name }}/teaser.png" data-lity>
+				<img src="{{ BASE_PATH }}assets/papers/{{ paper.name }}/teaser.png" class="paper-pic-large boxed" onError="style.display = 'none';">
+			</a>
+
+			{% assign content = paper.content | strip %}
+			{% if content != "" %}
+	    	<div class="paper-abstract">
+					{% capture content %}{{ content | remove_first: '<p>' }}{% endcapture %}
+	      	<p><b>Abstract: </b>{{ content }}
+	    	</div>
+    	{% endif %}
+
+			<div class="paper-links">
+				{% if paper.pdf %}<a href="{{ paper.pdf }}" target="_blank">paper</a>{% endif %}
+				{% if paper.poster %}<a href="{{ paper.poster }}" target="_blank">poster</a>{% endif %}
+				<a href="{{ paper.url }}" target="_blank" data-lity>bibtex</a>
+				{% if paper.video %}<a href="{{ paper.video }}" target="_blank" data-lity>video</a>{% endif %}
+				{% if paper.slides %}<a href="{{ paper.slides }}" target="_blank">slides</a>{% endif %}
+				{% if paper.fastforward %}<a href="{{ paper.fastforward }}" target="_blank" data-lity>fast forward</a>{% endif %}
+				{% if paper.doi %}<a href="http://dx.doi.org/{{ paper.doi }}" target="_blank">publisher</a>{% endif %}
+			</div>
+			<div class="triangle-bottom"></div>
+		</div>
+		<div class="shade-bottom"></div>
+	</div>
+</div>

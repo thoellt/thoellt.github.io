@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>BibTex</title>
+   <meta charset="UTF-8">
+	<link href='{{ ASSET_PATH }}/css/style.css' rel="stylesheet" media="all">
+</head>
+<body>
+	<div class="bibtex-outer">
+	<div class="bibtex-middle">
+	<div class="bibtex-entry">
+		
+		{% if page.kind == "journal" %}
+    	@article
+    {% elsif page.kind == "conference" %}
+    	@inproceedings
+    {% elsif page.kind == "book" %}
+    	@book
+    {% elsif page.kind == "masters" %}
+    	@mastersthesis
+    {% elsif page.kind == "phd" %}
+    	@phdthesis
+    {% else %}
+    	@misc
+    {% endif %}
+		{ bib:{{ page.name }}<br/>
+		
+    <div style="margin-left: 35px;">
+			
+			{% capture bib_author %}{{ page.author | remove:'and ' | replace:',',' and' }}{% endcapture %}
+			author = { {% include /functions/replace_umlauts.html input=bib_author %} },<br/>
+			title = { {{ page.title }} },<br/>
+			
+			{% if page.kind == "journal" %}
+	    	journal = { {{ page.journal }} },<br/>
+	    {% elsif page.kind == "conference" %}
+	    	booktitle = { {{ page.journal }} },<br/>
+	    {% elsif page.kind == "poster" %}
+	    	howpublished = { {{ page.journal }} },<br/>
+	    {% endif %}
+			
+			{% if page.volume %}
+	    	volume = { {{ page.volume }} },<br/>
+	    {% endif %}
+			
+			{% if page.issue %}
+	    	number = { {{ page.issue }} },<br/>
+	    {% endif %}
+			
+			{% if page.page_start %}
+	    	pages = { {{ page.page_start }}
+				{% if page.page_end %} -- {{ page.page_end }} {% endif %}
+				},<br/>
+	    {% endif %}
+			
+			{% if page.school %}
+				school = { {% include /functions/replace_umlauts.html input=page.school %} },<br/>
+	    {% endif %}
+			
+			{% if page.year %}
+	    	year = { {{ page.year }} },<br/>
+	    {% endif %}
+			
+			{% if page.doi %}
+	    	doi = { {{ page.doi }} },<br/>
+	    {% endif %}
+			
+    </div>
+  	}
+	</div>
+</div>
+</div>
+</body>
+</html>

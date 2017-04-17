@@ -1,0 +1,35 @@
+<head>
+	<title>{{ page.title }}</title>
+	<meta name="author" content="{{ site.author.name }}">
+	<meta charset="UTF-8">
+	<meta name = "viewport" content = "width = device-width">
+
+	<link href='{{ ASSET_PATH }}/css/style.css' rel="stylesheet" media="all">
+	<link href='{{ ASSET_PATH }}/css/lity.min.css' rel="stylesheet" media="all">
+	
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,200,100' rel='stylesheet' type='text/css'>
+	
+	<script src="{{ ASSET_PATH }}/js/jquery.js"></script>
+	<script src="{{ ASSET_PATH }}/js/lity.min.js"></script>
+	<script src="{{ ASSET_PATH }}/js/script.js"></script>
+</head>
+
+
+<body>
+	
+	<header class="navbar-container">
+	  <div class="navbar">
+	    <nav>
+	      <ul class="nav">
+	        <li><a href="#about">Contact</a></li>
+	        <li><a href="#interests">CV</a></li>
+	        <li><a href="#papers">Publications</a></li>
+	        <li><a href="http://gallery.thomashollt.com">Photography</a></li>
+	      </ul>
+	    </nav>
+	  </div>
+	</header>
+
+	{{ content }}
+	
+</body>
