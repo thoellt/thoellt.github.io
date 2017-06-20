@@ -5,12 +5,12 @@ kind: journal
 author: C. Zhang, M. Caan, T. Höllt, E.Eisemann, and A. Vilanova
 title: "Overview + Detail Visualization for Ensembles of Diffusion Tensors"
 journal: Computer Graphics Forum (Proceedings of EuroVis)
-page_start: 
-page_end: 
+page_start: 121
+page_end: 132
 volume: 36
 issue: 3
 year: 2017
-doi: 
+doi: 10.1111/cgf.13173 
 pdf: assets/papers/zhang_eurovis_2017/EuroVis2017_Overview_+_Detail_Visualization_for_Ensembles_of_Diffusion_Tensors.pdf
 poster: 
 video: 
