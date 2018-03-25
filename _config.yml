@@ -133,4 +133,16 @@ JB :
   # and include your custom code. Your custom file must be defined at:
   #   ./_includes/custom/[HELPER]
   # where [HELPER] is the name of the helper you are overriding.
+
+paper_content_url: /assets/papers
+
+plugins_dir:
+  - jekyll-redirect-from
   
+collections:
+  persons:
+    output: true
+    permalink: /persons/:path/
+  publications:
+    output: true
+    permalink: /publications/:path/

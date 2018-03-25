@@ -1,0 +1,62 @@
+<div id="papers" class="content">
+	<h1>Publications</h1>
+</div>
+
+{% for publication in site.publications %}
+  {% if publication.type == "preprint" %}
+    {% assign ifpreprint = 'true' %}
+  {% elsif publication.type == "inproceedings" or publication.type == "article" %}
+    {% assign ifpaper = 'true' %}
+  {% elsif publication.type == "book" or publication.type == "inbook" %}
+    {% assign ifbook = 'true' %}
+  {% elsif publication.type == "poster" %}
+    {% assign ifposter = 'true' %}
+  {% elsif publication.type == "mscthesis" or publication.type == "pdfthesis" %}
+    {% assign ifthesis = 'true' %}
+  {% endif %}
+{% endfor %}
+
+{% if ifpreprint %}
+  <h2 class="content">Preprints</h2>
+  {% for paper in site.publications reversed %}
+  	{% if paper.type == "preprint" %}
+  		{% include /functions/paper.html input=paper %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if ifpaper %}
+  <h2 class="content">Peer Reviewed Journal &amp; Conference Papers</h2>
+  {% for paper in site.publications reversed %}
+  	{% if paper.type == "inproceedings" or paper.type == "article" %}
+  		{% include /functions/paper.html input=paper %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if ifbook %}
+  <h2 class="content">Books &amp; Book Chapters</h2>
+  {% for paper in site.publications reversed %}
+  	{% if paper.type == "book" or paper.type == "inbook" %}
+  		{% include /functions/paper.html input=paper %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if ifposter %}
+  <h2 class="content">Posters &amp; Sketches</h2>
+  {% for paper in site.publications reversed %}
+  	{% if paper.type == "poster" %}
+  		{% include /functions/paper.html input=paper %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if ifthesis %}
+  <h2 class="content">Theses</h2>
+  {% for paper in site.publications reversed %}
+  	{% if paper.type == "mscthesis" or paper.type == "pdfthesis" %}
+  		{% include /functions/paper.html input=paper %}
+    {% endif %}
+  {% endfor %}
+{% endif %}

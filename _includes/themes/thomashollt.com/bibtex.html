@@ -10,33 +10,54 @@
 	<div class="bibtex-middle">
 	<div class="bibtex-entry">
 		
-		{% if page.kind == "journal" %}
+    {% if page.type == "article" or page.type == "preprint" %}
     	@article
-    {% elsif page.kind == "conference" %}
+    {% elsif page.type == "inproceedings" %}
     	@inproceedings
-    {% elsif page.kind == "book" %}
+    {% elsif page.type == "inbook" %}
+    	@inbook
+    {% elsif page.type == "book" %}
     	@book
-    {% elsif page.kind == "masters" %}
+    {% elsif page.type == "masters" %}
     	@mastersthesis
-    {% elsif page.kind == "phd" %}
+    {% elsif page.type == "phd" %}
     	@phdthesis
     {% else %}
     	@misc
     {% endif %}
-		{ bib:{{ page.name }}<br/>
+		{ bib:{{ page.key }}<br/>
 		
     <div style="margin-left: 35px;">
 			
-			{% capture bib_author %}{{ page.author | remove:'and ' | replace:',',' and' }}{% endcapture %}
-			author = { {% include /functions/replace_umlauts.html input=bib_author %} },<br/>
+			author = {
+
+        {% for author in page.authors %}
+
+          {% assign known = false %}
+          {% for person in site.persons %}
+            {% if author == person.key %}
+              {% include /functions/replace_umlauts.html input=person.first_name %} {% include /functions/replace_umlauts.html input=person.last_name %}
+              {% if author != page.authors.last%} and {% endif %}
+              {% assign known = true %}
+            {% endif %}
+          {% endfor %}
+
+          {% if known == false %}
+          {% include /functions/replace_umlauts.html input=author %}
+            {% if author != page.authors.last%} and {% endif %}
+          {% endif %}
+
+        {% endfor %}
+       },<br/>
+       
 			title = { {{ page.title }} },<br/>
 			
-			{% if page.kind == "journal" %}
+			{% if page.type == "article" %}
 	    	journal = { {{ page.journal }} },<br/>
-	    {% elsif page.kind == "conference" %}
+	    {% elsif page.type == "inproceedings" %}
 	    	booktitle = { {{ page.journal }} },<br/>
-	    {% elsif page.kind == "poster" %}
-	    	howpublished = { {{ page.journal }} },<br/>
+	    {% elsif page.type == "poster" %}
+	    	howpublished = { Poster presentation at {{ page.journal }} },<br/>
 	    {% endif %}
 			
 			{% if page.volume %}
@@ -52,6 +73,14 @@
 				{% if page.page_end %} -- {{ page.page_end }} {% endif %}
 				},<br/>
 	    {% endif %}
+
+      {% if page.editor %}
+				editor = { {{ page.editor }} },<br/>
+      {% endif %}
+
+      {% if page.publisher %}
+				publisher = { {{ page.publisher }} },<br/>
+      {% endif %}
 			
 			{% if page.school %}
 				school = { {% include /functions/replace_umlauts.html input=page.school %} },<br/>

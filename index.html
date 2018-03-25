@@ -129,31 +129,8 @@ title: About Thomas
 	 </div>
 
 	<div class="content-box">
-  	
-		<div id="papers" class="content">
-  		<h1>Publications</h1>
-  	</div>
-	
-		<h2 class="content">Peer Reviewed Journal &amp; Conference Papers</h2>
-		{% for paper in site.posts %}
-			{% if paper.kind == "journal" or paper.kind == "conference" %}
-				{% include /functions/paper.html input=paper %}
-	    {% endif %}
-		{% endfor %}
-	
-		<h2 class="content">Posters &amp; Sketches</h2>
-		{% for paper in site.posts %}
-			{% if paper.kind == "poster" %}
-				{% include /functions/paper.html input=paper %}
-	    {% endif %}
-		{% endfor %}
-	
-		<h2 class="content">Theses</h2>
-		{% for paper in site.posts %}
-			{% if paper.kind == "masters" or paper.kind == "phd" %}
-				{% include /functions/paper.html input=paper %}
-	    {% endif %}
-		{% endfor %}
+    
+    {% include themes/thomashollt.com/papers.html %}
 
 	</div>
 </div>

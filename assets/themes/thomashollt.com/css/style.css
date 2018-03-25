@@ -131,7 +131,7 @@ a, a:visited {
 }
 
 .content {
-    max-width: 1010px;
+    max-width: 1180px;
     min-width: 280px;
     margin-left: auto;
     margin-right: auto;
@@ -140,7 +140,7 @@ a, a:visited {
 }
 
 #about {
-    max-width: 1040px;
+    max-width: 1200px;
     padding-left: 10px;
     padding-right: 10px
 }
@@ -355,4 +355,9 @@ a, a:visited {
     font-size: 1.10em;
     font-weight: 100;
     line-height: 1.5em
+}
+
+.dashed-underline {    
+    border-bottom: 1px dotted;
+    text-decoration: none;
 }

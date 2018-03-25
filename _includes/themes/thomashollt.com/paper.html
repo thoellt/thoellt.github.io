@@ -1,14 +1,41 @@
 {% capture id %}{{ paper.id | remove:'/' | downcase }}{% endcapture %}
 <div class="content row" id="{{id}}">
-	<img src="{{ BASE_PATH }}assets/papers/{{ paper.name }}/icon.png" class="paper-pic" />
+	<img src="{{ BASE_PATH }}assets/papers/{{ paper.key }}/icon.png" class="paper-pic" />
 
   <div class="paper-text">
-    <span class="p-aut">{{ paper.author }}.</span>
+    <span class="p-aut">
+      {% assign n_authors = paper.authors.size %}
+			{% assign shorten = false %}
+      {% if n_authors > 8 %}
+        {% assign shorten = true %}
+        {% assign n_authors = 5 %}
+      {% endif %}
+        {% for author in paper.authors limit:n_authors %}
+        {% assign known = false %}
+        {% for person in site.persons %}
+          {% if author == person.key %}
+						{% if author == paper.authors.last and paper.authors.size > 1%}and{% endif %}
+						{% if author == "hollt" %}<span class="dashed-underline">{% else %}<span>{% endif %}
+              {{ person.first_name }}&nbsp;{{ person.last_name }}{% if author != paper.authors.last%}, {% else %}. {% endif %}
+            </span>
+            {% if shorten and author == paper.authors[4] %}et al.{% endif %}
+            {% assign known = true %}
+          {% endif %}
+        {% endfor %}
+
+        {% if known == false %}
+          {% if author == paper.authors.last %}and{% endif %}
+          {{ author }}{% if author != paper.authors.last%}, {% else %}. {% endif %}
+          {% if shorten and author == paper.authors[4] %}et al.{% endif %}
+        {% endif %}
+
+      {% endfor %}
+    </span>
     <span class="p-tit">{{ paper.title }}.</span>
 
-		{% if paper.kind == "journal" %}
+		{% if paper.type == "article" %}
     	<span class="p-jou">{{ paper.journal }},</span>
-    {% elsif paper.kind == "conference" %}
+    {% elsif paper.type == "inproceedings" %}
 			In {{ paper.journal }},
     {% else %}
 			{{ paper.journal }},
@@ -34,28 +61,56 @@
 		<div class="content">
 			<div class="triangle-top"></div>
 			<h1>{{ paper.title }}</h1>
-			<h3>{{ paper.author }}<br/>{{ paper.journal }}</h3>
+			<h3>
+        {% for author in paper.authors %}
+          {% assign known = false %}
+          {% for person in site.persons %}
+            {% if author == person.key %}
+							{% if author == paper.authors.last and paper.authors.size > 1%}and{% endif %}
+						  {% if author == "hollt" %}<span class="dashed-underline">{% else %}<span>{% endif %}
+                {{ person.first_name }}&nbsp;{{ person.last_name }}{% if paper.authors.size > 1%}{% if author != paper.authors.last%},{% else %}.{% endif %}{% endif %}
+            </span>
+              {% assign known = true %}
+            {% endif %}
+          {% endfor %}
 
-			<a href="{{ BASE_PATH }}assets/papers/{{ paper.name }}/teaser.png" data-lity>
-				<img src="{{ BASE_PATH }}assets/papers/{{ paper.name }}/teaser.png" class="paper-pic-large boxed" onError="style.display = 'none';">
+          {% if known == false %}
+            {% if author == paper.authors.last %}and{% endif %}
+            {{ author }}{% if author != paper.authors.last%}, {% else %}. {% endif %}
+          {% endif %}
+
+        {% endfor %}
+        <br/>
+        {{ paper.journal }}
+      </h3>
+
+			<a href="{{ BASE_PATH }}assets/papers/{{ paper.key }}/teaser.png" data-lity>
+				<img src="{{ BASE_PATH }}assets/papers/{{ paper.key }}/teaser.png" class="paper-pic-large boxed" onError="style.display = 'none';">
 			</a>
 
-			{% assign content = paper.content | strip %}
-			{% if content != "" %}
-	    	<div class="paper-abstract">
-					{% capture content %}{{ content | remove_first: '<p>' }}{% endcapture %}
-	      	<p><b>Abstract: </b>{{ content }}
-	    	</div>
-    	{% endif %}
+    	<div class="paper-abstract">
+      	<p><b>Abstract: </b>{{ paper.abstract }}</p>
+
+        {{ paper.content }}
+
+        {%if paper.award %}
+        <p><span class="award"><i class="fa fa-diamond"></i>&nbsp;{{ paper.award }}</span></p>
+        {% endif %}
+    	</div>
 
 			<div class="paper-links">
-				{% if paper.pdf %}<a href="{{ paper.pdf }}" target="_blank">paper</a>{% endif %}
-				{% if paper.poster %}<a href="{{ paper.poster }}" target="_blank">poster</a>{% endif %}
-				<a href="{{ paper.url }}" target="_blank" data-lity>bibtex</a>
-				{% if paper.video %}<a href="{{ paper.video }}" target="_blank" data-lity>video</a>{% endif %}
-				{% if paper.slides %}<a href="{{ paper.slides }}" target="_blank">slides</a>{% endif %}
-				{% if paper.fastforward %}<a href="{{ paper.fastforward }}" target="_blank" data-lity>fast forward</a>{% endif %}
-				{% if paper.doi %}<a href="http://dx.doi.org/{{ paper.doi }}" target="_blank">publisher</a>{% endif %}
+				{% if paper.pdf %}<a href="{{ BASE_PATH }}assets/papers/{{ paper.key }}/{{ paper.pdf }}" target="_blank">Preprint</a>{% endif %}
+        {% if paper.doi %}<a href="https://dx.doi.org/{{ paper.doi }}" target="_blank">Publisher</a>
+        {% elsif paper.publisher-url %}<a href="{{ paper.publisher-url }}" target="_blank">Publisher</a>{% endif %}
+				{% if paper.poster %}<a href="{{ BASE_PATH }}assets/papers/{{ paper.key }}/{{ paper.poster }}" target="_blank">Poster</a>{% endif %}
+        {% if paper.supplement %}<a href="{{ BASE_PATH }}assets/papers/{{ paper.key }}/{{ paper.supplement }}" target="_blank">Supplement</a>{% endif %}
+        {% if paper.supplements %}
+          {% for supplement in paper.supplements %}
+              <a href="{% if supplement.abslink %}{{ supplement.abslink }}{% else %}{{ BASE_PATH }}assets/papers/{{ paper.key }}/{{ supplement.link }}{% endif %}" target="_blank">{{supplement.name}}</a>
+          {% endfor %}
+        {% endif %}
+        {% if paper.code %}<a href="{{ paper.code }}" target="_blank">Code</a>{% endif %}
+				<a href="{{ paper.url }}" target="_blank" data-lity>Bibtex</a>
 			</div>
 			<div class="triangle-bottom"></div>
 		</div>
