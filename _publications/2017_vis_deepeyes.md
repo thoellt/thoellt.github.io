@@ -2,6 +2,7 @@
 layout: publication
 title: "DeepEyes: Progressive Visual Analytics for Designing Deep Neural Networks"
 key: 2017_vis_deepeyes
+date:   2018-01-01 12:00:00
 permalink: /publications/2017_vis_deepeyes/
 type: article
 shortname: DeepEyes
@@ -18,8 +19,8 @@ authors:
 
 journal: IEEE Transactions on Visualization and Computer Graphics (Proceedings of IEEE VAST 2017)
 journal-short: TVCG (VAST '17)
-page_start:
-page_end:
+page_start: 98
+page_end: 108
 chapter:
 volume: 24
 issue: 1

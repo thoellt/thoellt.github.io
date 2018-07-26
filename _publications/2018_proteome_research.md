@@ -2,11 +2,12 @@
 layout: publication
 title: "Interactive Visual Exploration of 3D Mass Spectrometry Imaging Data Using Hierarchical Stochastic Neighbor Embedding Reveals Spatiomolecular Structures at Full Data Resolution"
 key: 2018_proteome_research
+date:   2018-02-12 12:00:00
 permalink: /publications/2018_proteome_research/
 type: article
 shortname: 3D Mass Spec using HSNE
 image: 2018_proteome_research.png
-image_large: 2018_proteome_research_teaser.png
+image_large:
 
 authors:
 - Walid M. Abdelmoula
@@ -19,11 +20,11 @@ authors:
 
 journal: Journal of Proteome Research
 journal-short: J. Proteome Res.
-page_start:
-page_end:
+page_start: 1054
+page_end: 1064
 chapter:
-volume:
-issue:
+volume: 17
+issue: 3
 year: 2018
 editor:
 publisher:

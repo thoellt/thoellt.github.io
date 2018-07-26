@@ -2,6 +2,7 @@
 layout: publication
 title: "Visual Analysis of Mass Cytometry Data by Hierarchical Stochastic Neighbor Embedding Reveals Rare Cell Types"
 key: 2017_hsne_preprint
+date:   2017-11-23 12:00:00
 permalink: /publications/2017_hsne_nature_communications/
 redirect_from: /publications/2017_hsne_preprint/
 type: article
@@ -31,7 +32,7 @@ year: 2017
 editor:
 publisher:
 school:
-award:
+award: Selected talk @ BioVis/ISMB 2018
 
 doi: 10.1038/s41467-017-01689-9
 publisher-url:
@@ -48,6 +49,10 @@ supplements:
 - name: Video
   abslink: https://vimeo.com/205552113
   icon: video
+supplements:
+- name: Slides (BioVis)
+  abslink: https://www.thomashollt.com/assets/papers/2017_hsne_preprint/2018_hsne_biovis.pdf
+  icon: powerpoint
 code:
 
 abstract: "Mass cytometry allows high-resolution dissection of the cellular composition of the immune system. However, the high-dimensionality, large size, and non-linear structure of the data poses considerable challenges for data analysis. In particular, dimensionality reduction-based techniques like t-SNE offer single-cell resolution but are limited in the number of cells that can be analysed. Here we introduce Hierarchical Stochastic Neighbor Embedding (HSNE) for the analysis of mass cytometry datasets. HSNE constructs a hierarchy of non-linear similarities that can be interactively explored with a stepwise increase in detail up to the single-cell level. We applied HSNE to a study on gastrointestinal disorders and three other available mass cytometry datasets. We found that HSNE efficiently replicates previous observations and identifies rare cell populations that were previously missed due to downsampling. Thus, HSNE removes the scalability limit of conventional t-SNE analysis, a feature that makes it highly suitable for the analysis of massive high-dimensional datasets."
