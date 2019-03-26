@@ -96,9 +96,11 @@
         {%if paper.award %}
         <p><span class="award"><i class="fa fa-diamond"></i>&nbsp;{{ paper.award }}</span></p>
         {% endif %}
+                
     	</div>
-
+      
 			<div class="paper-links">
+        <div class="paper-links-left">
 				{% if paper.pdf %}<a href="{{ BASE_PATH }}assets/papers/{{ paper.key }}/{{ paper.pdf }}" target="_blank">Preprint</a>{% endif %}
         {% if paper.doi %}<a href="https://dx.doi.org/{{ paper.doi }}" target="_blank">Publisher</a>
         {% elsif paper.publisher-url %}<a href="{{ paper.publisher-url }}" target="_blank">Publisher</a>{% endif %}
@@ -111,8 +113,12 @@
         {% endif %}
         {% if paper.code %}<a href="{{ paper.code }}" target="_blank">Code</a>{% endif %}
 				<a href="{{ paper.url }}" target="_blank" data-lity>Bibtex</a>
+			  </div>
+        <div class="paper-links-right">
+          {% if paper.doi %} <span class="__dimensions_badge_embed__" data-doi="{{paper.doi}}" data-legend="hover-top" data-style="large_rectangle"></span> {% endif %}
+			  </div>
 			</div>
-			<div class="triangle-bottom"></div>
+			<!--div class="triangle-bottom"></div-->
 		</div>
 		<div class="shade-bottom"></div>
 	</div>

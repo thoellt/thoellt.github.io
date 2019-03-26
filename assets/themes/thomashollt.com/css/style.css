@@ -259,31 +259,53 @@ a, a:visited {
 
 .shade-top {
     z-index: 0;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     height: 12px;
     background-color: #FFF
 }
 
 .paper-links, .paper-links a, .paper-links a:visited {
-    padding-right: 15px;
     color: #FFF;
     line-height: 1.5em;
     font-weight: 400;
-    text-decoration: none
+    text-decoration: none;
+    padding-right: 10px;
 }
 
 .paper-links {
-    padding-top: 10px;
-    padding-bottom: 15px;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-direction: row;
+    flex-direction: row;
+
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+
+    -webkit-align-items: top;
+    align-items: top;
+    
+    padding: 10px 0px 10px 0px;
     border-top: 0.5px solid #FFF
 }
+
+.paper-links-right {
+    padding-left: 10px;
+    margin-left: auto;
+}
+
+.paper-links-left {
+   -webkit-align-self: flex-start;
+   align-self: flex-start;
+}
+
 
 .triangle-top {
     position: relative;
     -moz-transform: rotateZ(45deg);
     -webkit-transform: rotateZ(45deg);
     background-color: #140028;
-    top: -23px;
+    top: -33px;
     left: 25px;
     width: 17px;
     height: 17px;
