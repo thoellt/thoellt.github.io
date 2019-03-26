@@ -30,7 +30,7 @@ year: 2019
 editor:
 publisher:
 school:
-award:
+award: Finalist, Dirk Bartz Prize for Visual Computing in Medicine 2019
 
 doi: 
 publisher-url:

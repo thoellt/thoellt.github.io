@@ -4,10 +4,10 @@ title: "Focus+Context Exploration of Hierarchical Embeddings"
 key: 2019_eurovis
 date:   2019-03-25 12:00:00
 permalink: /publications/2019_eurovis/
-type: inproceedings
+type: article
 shortname: Focus+Context HSNE
 image: 2019_eurovis.png
-image_large: 2019_eurovis_teaser_.png
+image_large: 2019_eurovis_teaser.png
 
 authors:
 - hollt
