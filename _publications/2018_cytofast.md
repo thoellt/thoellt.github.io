@@ -1,6 +1,6 @@
 ---
 layout: publication
-title: "Cytofast: A Workflow for Visual and Quantitative Analysis of Flow and Mass Cytometry Data to Discover Immune Signatures and Correlations"
+title: "Cytofast: A workflow for visual and quantitative analysis of flow and mass cytometry data to discover immune signatures and correlations"
 key: 2018_cytofast
 date:   2018-10-24 12:00:00
 permalink: /publications/2018_cytofast/
@@ -18,11 +18,11 @@ authors:
 
 journal: Computational and Structural Biotechnology Journal
 journal-short: CSBJ
-page_start: 
-page_end: 
+page_start: 435
+page_end: 442
 chapter:
-volume: 
-issue: 
+volume: 16
+issue:
 year: 2018
 editor:
 publisher:
@@ -32,7 +32,8 @@ award:
 doi: 10.1016/j.csbj.2018.10.004
 publisher-url:
 
-project:
+projects:
+- cytosplore
 external-project:
 
 videos:
