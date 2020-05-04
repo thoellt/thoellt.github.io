@@ -143,4 +143,3 @@ collections:
   publications:
     output: true
     permalink: /publications/:path/
-theme: jekyll-theme-cayman
