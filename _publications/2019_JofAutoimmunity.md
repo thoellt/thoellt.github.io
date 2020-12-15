@@ -25,9 +25,9 @@ journal-short: Journal of Autoimmunity
 page_start: 102361
 page_end:
 chapter:
-volume: 2
+volume: 107
 issue: 
-year: 2019
+year: 2020
 editor:
 publisher:
 school:

@@ -46,6 +46,7 @@ doi: 10.1038/s41590-018-0294-9
 publisher-url:
 
 projects:
+- imagingcytometry
 - cytosplore
 
 external-project:

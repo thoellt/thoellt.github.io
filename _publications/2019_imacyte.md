@@ -2,9 +2,9 @@
 layout: publication
 title: "ImaCytE: Visual Exploration of Cellular Microenvironments for Imaging Mass Cytometry Data"
 key: 2019_imacyte
-date:   2019-07-29 12:00:00
+date:   2020-07-29 12:00:00
 permalink: /publications/2019_imacyte/
-type: inproceedings
+type: article
 shortname: IMaCytE
 image: 2019_imacyte.png
 image_large: 2019_imacyte_teaser_.png
@@ -18,12 +18,12 @@ authors:
 
 journal: IEEE Transactions on Visualization and Computer Graphics
 journal-short: TVCG
-page_start:
-page_end:
+page_start: 98
+page_end: 110
 chapter:
-volume:
-issue:
-year: 2019
+volume: 27
+issue: 1
+year: 2021
 editor:
 publisher:
 school:
@@ -33,6 +33,7 @@ doi: 10.1109/TVCG.2019.2931299
 publisher-url:
 
 projects:
+- imagingcytometry
 
 external-project:
 

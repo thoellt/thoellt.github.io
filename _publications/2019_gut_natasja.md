@@ -12,7 +12,7 @@ image_large:
 authors:
 - Natasja L de Vries
 - vanunen
-- Marieke E Ijsselsteijn
+- ijsselsteijn
 - abdelaal
 - Ruud van der Breggen
 - Arantza Farina Sarasqueta
@@ -25,12 +25,12 @@ authors:
 
 journal: Gut
 journal-short: Gut
-page_start: 
-page_end: 
+page_start: 691
+page_end: 703
 chapter:
-volume: 
+volume: 69
 issue: 
-year: 2019
+year: 2020
 editor:
 publisher:
 school:
